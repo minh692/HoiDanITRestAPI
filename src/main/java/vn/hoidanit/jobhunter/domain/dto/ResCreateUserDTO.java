@@ -1,4 +1,4 @@
-package vn.hoidanit.jobhunter.domain.response;
+package vn.hoidanit.jobhunter.domain.dto;
 
 import java.time.Instant;
 import lombok.Getter;
