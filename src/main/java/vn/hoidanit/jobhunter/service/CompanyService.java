@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.List;
 import vn.hoidanit.jobhunter.domain.Company;
-import vn.hoidanit.jobhunter.domain.dto.Meta;
 import vn.hoidanit.jobhunter.domain.dto.ResultPaginationDTO;
 import vn.hoidanit.jobhunter.repository.CompanyRepositoy;
 
@@ -52,7 +51,7 @@ public class CompanyService {
     public ResultPaginationDTO handleGetAllCompany(Specification<Company> spec, Pageable pageable) {
         Page<Company> pageCompany = this.companyRepositoy.findAll(spec, pageable);
         ResultPaginationDTO rs = new ResultPaginationDTO();
-        Meta meta = new Meta();
+        ResultPaginationDTO.Meta meta = new ResultPaginationDTO.Meta();
 
         meta.setPage(pageable.getPageNumber() + 1); // trang hiện tại
         meta.setPageSize(pageable.getPageSize()); // lấy bao nhiêu phần tử
