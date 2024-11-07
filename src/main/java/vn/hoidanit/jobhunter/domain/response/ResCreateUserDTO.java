@@ -1,6 +1,8 @@
-package vn.hoidanit.jobhunter.domain.dto;
+package vn.hoidanit.jobhunter.domain.response;
 
 import java.time.Instant;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import vn.hoidanit.jobhunter.util.constant.GenderEnum;
@@ -22,4 +24,12 @@ public class ResCreateUserDTO {
 
     private Instant createdAt;
 
+    private CompanyUser company;
+
+    @Getter
+    @Setter
+    public static class CompanyUser {
+        private long id;
+        private String name;
+    }
 }

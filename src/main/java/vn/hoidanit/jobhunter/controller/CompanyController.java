@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import jakarta.validation.Valid;
 import vn.hoidanit.jobhunter.domain.Company;
-import vn.hoidanit.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.hoidanit.jobhunter.domain.response.ResultPaginationDTO;
 import vn.hoidanit.jobhunter.service.CompanyService;
 import vn.hoidanit.jobhunter.util.error.IdInvalidException;
 
@@ -53,9 +53,6 @@ public class CompanyController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deteleCompany(@PathVariable("id") long id) throws IdInvalidException {
-        if (id >= 1500) {
-            throw new IdInvalidException("ID không được lớn hơn 1500");
-        }
         this.companyService.handleDeleteCompany(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }

@@ -7,15 +7,19 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.List;
 import vn.hoidanit.jobhunter.domain.Company;
-import vn.hoidanit.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.hoidanit.jobhunter.domain.User;
+import vn.hoidanit.jobhunter.domain.response.ResultPaginationDTO;
 import vn.hoidanit.jobhunter.repository.CompanyRepositoy;
+import vn.hoidanit.jobhunter.repository.UserRepository;
 
 @Service
 public class CompanyService {
     private final CompanyRepositoy companyRepositoy;
+    private final UserRepository userRepository;
 
-    public CompanyService(CompanyRepositoy companyRepositoy) {
+    public CompanyService(CompanyRepositoy companyRepositoy, UserRepository userRepository) {
         this.companyRepositoy = companyRepositoy;
+        this.userRepository = userRepository;
     }
 
     public Company handleCreateCompany(Company company) {
@@ -45,6 +49,13 @@ public class CompanyService {
     }
 
     public void handleDeleteCompany(long id) {
+        Optional<Company> comOptional = this.companyRepositoy.findById(id);
+        if (comOptional.isPresent()) {
+            Company com = comOptional.get();
+            // fetch all user belong to this company
+            List<User> users = this.userRepository.findByCompany(com);
+            this.userRepository.deleteAll(users);
+        }
         this.companyRepositoy.deleteById(id);
     }
 
@@ -63,5 +74,9 @@ public class CompanyService {
         rs.setResult(pageCompany.getContent());
 
         return rs;
+    }
+
+    public Optional<Company> findById(long id) {
+        return this.companyRepositoy.findById(id);
     }
 }

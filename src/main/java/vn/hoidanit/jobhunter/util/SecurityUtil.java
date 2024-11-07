@@ -27,7 +27,7 @@ import java.util.Optional;
 import org.springframework.security.core.context.SecurityContext;
 import com.nimbusds.jose.util.Base64;
 
-import vn.hoidanit.jobhunter.domain.dto.ResLoginDTO;
+import vn.hoidanit.jobhunter.domain.response.ResLoginDTO;
 
 @Service
 public class SecurityUtil {
