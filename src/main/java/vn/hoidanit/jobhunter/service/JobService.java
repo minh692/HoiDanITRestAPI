@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import vn.hoidanit.jobhunter.domain.Job;
 import vn.hoidanit.jobhunter.domain.Skill;
+import vn.hoidanit.jobhunter.domain.User;
 import vn.hoidanit.jobhunter.domain.response.ResCreateJobDTO;
 import vn.hoidanit.jobhunter.domain.response.ResUpdateJobDTO;
 import vn.hoidanit.jobhunter.domain.response.ResultPaginationDTO;
@@ -125,4 +126,8 @@ public class JobService {
 
         return rs;
     }
+
+    // public Optional<Job> findById(long id) {
+    // return this.jobRepository.findById(id);
+    // }
 }

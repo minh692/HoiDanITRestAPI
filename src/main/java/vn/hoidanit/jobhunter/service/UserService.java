@@ -178,4 +178,8 @@ public class UserService {
     public User getUserByRefreshTokenAndEmail(String token, String email) {
         return this.userRepository.findByRefreshTokenAndEmail(token, email);
     }
+
+    // public Optional<User> findById(long id) {
+    // return this.userRepository.findById(id);
+    // }
 }
